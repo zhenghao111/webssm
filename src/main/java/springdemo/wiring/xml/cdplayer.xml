@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 不指定id是完全限定名#计数-->
+    <bean id="sgtPeppers3" class="springdemo.wiring.xml.basepackage.SgtPeppers" />
+
+    <bean id="cdPlayer3" class="springdemo.wiring.xml.basepackage.CDPlayer">
+        <constructor-arg ref="sgtPeppers3"/>
+    </bean>
+
+    <bean id="sgtPeppers4" class="springdemo.wiring.xml.basepackage.CDPlayer" c:cd-ref="sgtPeppers3" />
+    <bean id="sgtPeppers5" class="springdemo.wiring.xml.basepackage.CDPlayer" c:_0-ref="sgtPeppers3" />
+
+    <!-- c:_0 c:_title c:_0-ref c:_title-ref 构造器只有一个参数可以用c:_ c:_-ref -->
+    <bean id="blankDisc" class="springdemo.wiring.xml.basepackage.BlankDisc"
+          c:title="Custom Title"
+          c:artist="Custom Artist" />
+
+    <!-- 构造器第三个参数是List<String>,引用用<ref bean=""> -->
+    <!-- 同样<set>,set重复元素忽略，没有顺序 -->
+    <!-- c命名空间不能装配集合 -->
+    <bean id="blankDisc2" class="springdemo.wiring.xml.basepackage.BlankDiscWithTracks">
+        <constructor-arg value="Custom Title" />
+        <constructor-arg value="Custom Artist"/>
+        <constructor-arg>
+            <list>
+                <value>Track1</value>
+                <value>Track2</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- 通过属性的setter方法注入 -->
+    <bean id="csPlayer4" class="springdemo.wiring.xml.basepackage.CDPlayer">
+        <property name="cd" ref="sgtPeppers3" />
+    </bean>
+
+    <!--<bean id="csPlayer6" class="springdemo.wiring.xml.basepackage.BlankDiscWithTracks">-->
+        <!--<property name="title" value="Custom Title" />-->
+        <!--<property name="artist" value="Custom Artist" />-->
+        <!--<property name="tracks">-->
+            <!--<list>-->
+                <!--<value>Track1</value>-->
+                <!--<value>Track2</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 使用p空间命名，通过属性的setter方法注入-->
+    <bean id="cdPlayer5" class="springdemo.wiring.xml.basepackage.CDPlayer" p:cd-ref="sgtPeppers3" />
+
+
+    <util:list id="trackList">
+       <value>Track1</value>
+        <value>Track2</value>
+    </util:list>
+
+    <!--<bean id="blankDisc7" class="springdemo.wiring.xml.basepackage.BlankDiscWithTracks"-->
+          <!--p:title="Custom Title"-->
+          <!--p:artist="Custom Artist"-->
+          <!--p:tracks-ref="trackList" />-->
+</beans>
