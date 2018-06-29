@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class MaginBeanConfig {
 
     @Bean
-    @Conditional((MagicExistsCondition.class))
+    @Conditional(MagicExistsCondition.class)
     public MaginBean magicBean() {
         return new MaginBean();
     }
