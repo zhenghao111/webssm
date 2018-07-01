@@ -8,11 +8,8 @@ import java.util.List;
 
 public class BlankDisc implements CD {
 
-    @Setter
     private String title;
-    @Setter
     private String artist;
-    @Setter
     private List<Integer> tracks;
 
     public BlankDisc() {
@@ -39,4 +36,15 @@ public class BlankDisc implements CD {
         System.out.println("Track: " + trackNumber);
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setTracks(List<Integer> tracks) {
+        this.tracks = tracks;
+    }
 }
