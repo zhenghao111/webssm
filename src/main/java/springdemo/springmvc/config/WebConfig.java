@@ -1,5 +1,8 @@
 package springdemo.springmvc.config;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,13 +13,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.Thymeleaf;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.AbstractConfigurableTemplateResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolution;
+
 
 @Configuration
 @EnableWebMvc //启用Spring MVC
 @ComponentScan("springdemo.springmvc")
-public class WebConfig extends WebMvcConfigurerAdapter {
-
-
+public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     // 查找JSP文件，处理视图JSP
 //    @Bean
@@ -38,8 +49,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
        configurer.enable();
     }
 
-    // 定义TilesConfigurer
-    @Bean
+    // 定义TilesConfigurer定位和加载Tiles定义
+//    @Bean
     public TilesConfigurer tilesConfigurer() {
         TilesConfigurer tiles = new TilesConfigurer();
         //定位和加载Tiles定义
@@ -51,10 +62,46 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return tiles;
     }
 
-    @Bean
+    //Tiles视图解析器
+//    @Bean
     public TilesViewResolver viewResolver2() {
         // 把逻辑视图名解析为Tiles定义
         return new TilesViewResolver();
     }
 
+    //Thymeleaf视图解析器.把逻辑视图名解析为Thymeleaf模板视图
+    @Bean
+    public ViewResolver viewResolver3(TemplateEngine templateEngine) {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine);
+        resolver.setCharacterEncoding("UTF-8");
+        return resolver;
+    }
+
+    // 模板引擎，处理模板、渲染结果
+    @Bean
+    public TemplateEngine templateEngine(AbstractConfigurableTemplateResolver templateResolution) {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.setEnableSpringELCompiler(true);
+        engine.setTemplateResolver(templateResolution);
+        return engine;
+    }
+
+    private ApplicationContext applicationContext;
+
+    // 模板解析器，定位和加载Thymeleaf模板
+    @Bean
+    public AbstractConfigurableTemplateResolver templateResolution() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/templates/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        return resolver;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }
