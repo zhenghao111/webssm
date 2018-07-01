@@ -16,7 +16,7 @@ public class SpittleController {
 
     private SpittleRepository spittleRepository;
 
-    @Autowired()
+    @Autowired
     public SpittleController(SpittleRepository spittleRepository) {
         this.spittleRepository = spittleRepository;
 //        System.out.println(spittleRepository.findSpittles(Long.MAX_VALUE, 20));
@@ -45,6 +45,9 @@ public class SpittleController {
     //@PathVariable相同变量名可以省略
     public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
         model.addAttribute(spittleRepository.findOne(spittleId));
+//        System.out.println(spittleId);
+//        System.out.println(spittleRepository.findOne(spittleId));
+//        System.out.println(model.containsAttribute("spittle"));
         return "spittle";
     }
 

@@ -9,6 +9,8 @@ import java.util.List;
 
 @Component
 public class DefaultSpittleRepository implements SpittleRepository {
+
+
     @Override
     public List<Spittle> findSpittles(long max, int count) {
         return createSpittleList(20);
@@ -16,7 +18,7 @@ public class DefaultSpittleRepository implements SpittleRepository {
 
     @Override
     public Spittle findOne(Long id) {
-        return null;
+        return new Spittle("1234", new Date());
     }
 
     private List<Spittle> createSpittleList(int count) {
