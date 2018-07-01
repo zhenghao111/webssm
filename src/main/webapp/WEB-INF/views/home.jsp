@@ -1,9 +1,10 @@
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ page session="false" %>
 <html>
-<body>
-<h2>Hello World!</h2>
+<body><h2>Hello World!</h2>
 
-<a href="<c:url value="/spitter" />">Spittles</a>
-<a href="<c:url value="/spitter/register" />">Register</a>
+
+<a href="<s:url value="/spitter" />">Spittles</a>
+<a href="<s:url value="/spitter/register" />">Register</a>
 </body>
 </html>
