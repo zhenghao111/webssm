@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springdemo.springmvc.Spitter;
 import springdemo.springmvc.data.SpitterRepository;
 
@@ -34,7 +33,11 @@ public class SpitterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String processRegistrationForm(@Valid Spitter spitter, Errors errors) {
+    public String processRegistrationForm(
+//            @RequestPart("photo") byte[] photo,
+            @RequestPart("photo") MultipartFile photo,
+            @Valid Spitter spitter, // 校验对象
+            Errors errors) {
          //使用Java校验API
         System.out.println(errors.hasErrors());
         if (errors.hasErrors()) {
@@ -42,9 +45,11 @@ public class SpitterController {
             return "/register";
         }
 
-
         //保存到数据库
         repository.save(spitter);
+
+        //保持图片
+
 
         //防止重复提交表单，最好是要重定向，发送新请求
         return "redirect:/spitter/" + spitter.getUserName();

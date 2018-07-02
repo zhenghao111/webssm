@@ -14,11 +14,12 @@
 <%--</form>--%>
 
 
-<sf:form method="post" commandName="spitter">
+<sf:form method="post" commandName="spitter" enctype="multipart/form-data">
     FN: <sf:input path="firstName" /><sf:errors path="firstName" /> <br/>
     LN: <sf:input path="lastName" /><sf:errors path="lastName" /> <br/>
     UN: <sf:input path="userName" /><sf:errors path="userName" /> <br/>
     PW: <sf:password path="password" /><sf:errors path="password" /> <br/>
+    Photo:<input type="file" name="photo" accept="image/jpeg">
     <input type="submit" value="register" />
 </sf:form>
 

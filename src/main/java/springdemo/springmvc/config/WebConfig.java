@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -30,7 +32,7 @@ import org.thymeleaf.templateresolver.TemplateResolution;
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     // 查找JSP文件，处理视图JSP
-//    @Bean
+    @Bean
     public ViewResolver viewResolver() {
         //视图解析器
         InternalResourceViewResolver resolver =
@@ -70,7 +72,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
 
     //Thymeleaf视图解析器.把逻辑视图名解析为Thymeleaf模板视图
-    @Bean
+//    @Bean
     public ViewResolver viewResolver3(TemplateEngine templateEngine) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine);
@@ -79,7 +81,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
 
     // 模板引擎，处理模板、渲染结果
-    @Bean
+//    @Bean
     public TemplateEngine templateEngine(AbstractConfigurableTemplateResolver templateResolution) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setEnableSpringELCompiler(true);
@@ -90,7 +92,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     private ApplicationContext applicationContext;
 
     // 模板解析器，定位和加载Thymeleaf模板
-    @Bean
+//    @Bean
     public AbstractConfigurableTemplateResolver templateResolution() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(applicationContext);
@@ -104,4 +106,12 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
+
+    // 配置multipart解析器
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
+    }
+
+
 }
