@@ -1,12 +1,7 @@
 package springdemo.springmvc.config;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.security.auth.RefreshFailedException;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import javax.servlet.*;
 
 // 方式1 自动创建DispatcherServlet、ContextLoaderListener加载Spring上下文、其他Spring上下文
