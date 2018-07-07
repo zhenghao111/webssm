@@ -153,6 +153,13 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/servlet-api -->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.tomcat</groupId>-->
+      <!--<artifactId>servlet-api</artifactId>-->
+      <!--<version>6.0.53</version>-->
+    <!--</dependency>-->
+
     <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
     <dependency>
       <groupId>javax.validation</groupId>
@@ -217,28 +224,28 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>5.0.6.RELEASE</version>
+      <version>4.2.7.RELEASE</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
-      <version>5.0.6.RELEASE</version>
+      <version>4.2.7.RELEASE</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>5.0.6.RELEASE</version>
+      <version>4.2.7.RELEASE</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-taglibs</artifactId>
-      <version>5.0.6.RELEASE</version>
+      <version>4.2.7.RELEASE</version>
     </dependency>
 
 

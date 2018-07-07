@@ -9,12 +9,18 @@ public class SpittrWebAppInitializer
         extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{ RootConfig.class };
+        return new Class[]{
+                RootConfig.class,
+                SecurityConfig.class,
+                DataSourceConfig.class
+        };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{ WebConfig.class };
+        return new Class[]{
+                WebConfig.class
+        };
     }
 
 //    @Override
@@ -24,7 +30,7 @@ public class SpittrWebAppInitializer
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{ "/" };
+        return new String[]{ "/", "/homepage", "/spittle" };
     }
 
     @Override

@@ -77,6 +77,17 @@ public class SpitterController {
         return "redirect:/spitter/{username}";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String showLoginForm() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String processLoginForm() {
+        return "home";
+    }
+
+
     // 处理重定向的请求
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public String showSpitterProfile(
