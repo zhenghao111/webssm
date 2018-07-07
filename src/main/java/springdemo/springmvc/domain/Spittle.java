@@ -8,12 +8,14 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 @Entity
 @Getter
 public class Spittle {
 
+    @Id
     private Long id;
     private String message;
     private Date time;

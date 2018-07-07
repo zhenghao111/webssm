@@ -18,7 +18,7 @@ import java.util.Map;
 //        return new JdbcSpitterRepository(jdbcTemplate);//会注入JdbcTemplate对象
 //}
 
-@Repository //包含了@Component，组件扫描和自动装配方案@Inject
+//@Repository //包含了@Component，组件扫描和自动装配方案@Inject
 public class JdbcSpitterRepository implements SpitterRepository {
 
     //JdbcTempalte类是JdbcOperations接口的实现类

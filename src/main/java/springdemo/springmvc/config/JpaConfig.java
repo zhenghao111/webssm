@@ -4,15 +4,19 @@ package springdemo.springmvc.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import springdemo.springmvc.domain.Spitter;
 
 import javax.sql.DataSource;
 
-//@Configuration
+@Configuration
+//使用Spring Data JPA
+@EnableJpaRepositories(basePackages = "springdemo.springmvc.repository.springdata")
 public class JpaConfig {
 
     //厂商适配器，指明使用哪一个厂商的JPA实现，TODO 这里应该有点问题
@@ -22,7 +26,7 @@ public class JpaConfig {
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
         adapter.setGenerateDdl(false);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MYSQLDialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 
         return adapter;
     }
@@ -35,20 +39,11 @@ public class JpaConfig {
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(adapter);
         //识别实体类，不需要在persistence.xml中进行声明了
-        entityManagerFactoryBean.setPackagesToScan("springdemo.springmvc.domain");
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"springdemo.springmvc.domain"});
+
 
         return entityManagerFactoryBean;
     }
 
-    //显示注册，使Spring可以理解@PersistenceUnit、@PersistenceContext
-    @Bean
-    public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
-        return new PersistenceAnnotationBeanPostProcessor();
-    }
 
-    //异常转化：不是强制的，没有使用模板类来处理异常，需要将异常转化为Spring统一的数据访问异常
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
 }

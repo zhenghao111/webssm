@@ -21,11 +21,13 @@ public class JpaSpitterRepository implements SpitterRepository{
 //    private EntityManagerFactory emf;
 
     //方式二：注入实体管理器的代理，真正的实体管理是和事物相关联，不存在这样的实体管理器就会创建一个新的，是线程安全的
+    //TODO 报错
     @PersistenceContext
     private EntityManager em;
 
 
     @Override
+    @Transactional
     public void addSpitter(Spitter spitter) {
         //方式一：创建实体管理器,EntityManager是线程不安全的，每次都创建一个新实例
 //        emf.createEntityManager().persist(spitter);
@@ -41,7 +43,8 @@ public class JpaSpitterRepository implements SpitterRepository{
     @Override
     public Spitter findOne(String username) {
 //        return emf.createEntityManager().find(Spitter.class, username);
-        return em.find(Spitter.class, username);
+//        return em.find(Spitter.class, username);
+        throw new NotImplementedException();
     }
 
     @Override

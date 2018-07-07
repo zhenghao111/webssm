@@ -19,9 +19,11 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <!-- spring版本号 -->
-    <spring.version>5.0.0.RELEASE</spring.version>
+    <spring.version>5.0.7.RELEASE</spring.version>
     <!-- mybatis版本号 -->
     <mybatis.version>3.4.1</mybatis.version>
+    <!-- hibernate版本号 -->
+    <hibernate.version>5.3.2.Final</hibernate.version>
 
   </properties>
 
@@ -266,14 +268,14 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>4.3.11.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
-      <version>4.3.11.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
 
 
@@ -283,6 +285,14 @@
       <artifactId>hibernate-jpa-2.1-api</artifactId>
       <version>1.0.2.Final</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-hibernate</artifactId>
+      <version>1.2.9</version>
+    </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
     <dependency>

@@ -13,8 +13,8 @@
     <%--<input type="submit" value="register" />--%>
 <%--</form>--%>
 
-
-<sf:form method="post" commandName="spitter" enctype="multipart/form-data">
+<!-- spring4版本用commandName -->
+<sf:form method="post" modelAttribute="spitter" enctype="multipart/form-data">
     FN: <sf:input path="firstName" /><sf:errors path="firstName" /> <br/>
     LN: <sf:input path="lastName" /><sf:errors path="lastName" /> <br/>
     UN: <sf:input path="userName" /><sf:errors path="userName" /> <br/>
