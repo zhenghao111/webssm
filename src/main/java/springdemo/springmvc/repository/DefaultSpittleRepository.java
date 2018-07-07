@@ -1,7 +1,7 @@
 package springdemo.springmvc.repository;
 
 import org.springframework.stereotype.Component;
-import springdemo.springmvc.Spittle;
+import springdemo.springmvc.domain.Spittle;
 
 import java.util.ArrayList;
 import java.util.Date;

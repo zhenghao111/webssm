@@ -11,8 +11,6 @@ public class SpittrWebAppInitializer
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
                 RootConfig.class,
-                SecurityConfig.class, // 可以不用写也有效
-                DataSourceConfig.class
         };
     }
 

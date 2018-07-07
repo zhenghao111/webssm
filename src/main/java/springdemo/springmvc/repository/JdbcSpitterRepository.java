@@ -1,27 +1,30 @@
 package springdemo.springmvc.repository;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import springdemo.springmvc.Spitter;
+import springdemo.springmvc.domain.Spitter;
 
+import javax.inject.Inject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 //方式一：组件扫描@Repository和自动装配@Inject
-//方式二：在DataSourceConfig中显示声明为Bean
+//方式二：在JavaConfig中显示声明为Bean
+//@Bean
+//public SpitterRepository spitterRepository(JdbcTemplate jdbcTemplate) {
+//        return new JdbcSpitterRepository(jdbcTemplate);//会注入JdbcTemplate对象
+//}
 
-//@Repository //包含了@Component，组件扫描和自动装配方案@Inject
+@Repository //包含了@Component，组件扫描和自动装配方案@Inject
 public class JdbcSpitterRepository implements SpitterRepository {
 
     //JdbcTempalte类是JdbcOperations接口的实现类
     private JdbcOperations jdbcOperations;
 
+    @Inject //与@Autowired作用一样
     public JdbcSpitterRepository(JdbcOperations jdbcOperations) {
         this.jdbcOperations = jdbcOperations;
     }

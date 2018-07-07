@@ -1,8 +1,7 @@
 package springdemo.springmvc.repository;
 
-import org.springframework.stereotype.Component;
-import springdemo.springmvc.Spitter;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.apache.commons.lang.NotImplementedException;
+import springdemo.springmvc.domain.Spitter;
 
 import java.util.*;
 

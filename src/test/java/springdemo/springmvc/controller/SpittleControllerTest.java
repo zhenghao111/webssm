@@ -3,7 +3,7 @@ package springdemo.springmvc.controller;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
-import springdemo.springmvc.Spittle;
+import springdemo.springmvc.domain.Spittle;
 import springdemo.springmvc.repository.SpittleRepository;
 
 import java.util.ArrayList;

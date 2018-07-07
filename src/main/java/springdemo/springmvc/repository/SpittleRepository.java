@@ -1,6 +1,6 @@
 package springdemo.springmvc.repository;
 
-import springdemo.springmvc.Spittle;
+import springdemo.springmvc.domain.Spittle;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package springdemo.springmvc.controller;
 
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
-import springdemo.springmvc.Spitter;
+import springdemo.springmvc.domain.Spitter;
 import springdemo.springmvc.repository.SpitterRepository;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.context.WebApplicationContext;
-import springdemo.springmvc.Spitter;
+import springdemo.springmvc.domain.Spitter;
 import springdemo.springmvc.config.DataSourceConfig;
 
 

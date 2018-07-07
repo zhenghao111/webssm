@@ -11,6 +11,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jndi.JndiObjectFactoryBean;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import springdemo.springmvc.repository.JdbcSpitterRepository;
 import springdemo.springmvc.repository.SpitterRepository;
 
@@ -69,20 +73,8 @@ public class DataSourceConfig {
                 .build();
     }
 
-    @Bean
-    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-        return new JdbcTemplate(dataSource);//会注入DataSource接口的实现类
-    }
 
-    //使用命名参数的JdbcTemplate
-    @Bean
-    public NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource dataSource) {
-        return new NamedParameterJdbcTemplate(dataSource);
-    }
 
-    @Bean
-    public SpitterRepository spitterRepository(JdbcTemplate jdbcTemplate) {
-        return new JdbcSpitterRepository(jdbcTemplate);//会注入JdbcTemplate对象
-    }
+
 
 }

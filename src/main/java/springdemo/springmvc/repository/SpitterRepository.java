@@ -1,6 +1,6 @@
 package springdemo.springmvc.repository;
 
-import springdemo.springmvc.Spitter;
+import springdemo.springmvc.domain.Spitter;
 
 public interface SpitterRepository {
     Spitter save(Spitter spitter);
