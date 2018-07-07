@@ -1,6 +1,7 @@
 package springdemo.springmvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -8,15 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springdemo.springmvc.Spitter;
-import springdemo.springmvc.data.SpitterRepository;
-import springdemo.springmvc.exception.DuplicateSpittleException;
+import springdemo.springmvc.repository.SpitterRepository;
 import springdemo.springmvc.exception.SpittleNotFoundException;
 
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 
-@Controller
+@Controller // 包含@Component
 @RequestMapping("/spitter")
 public class SpitterController {
 
@@ -54,7 +54,9 @@ public class SpitterController {
         }
 
         //保存到数据库
-        repository.save(spitter);
+        repository.addSpitter(spitter);
+
+//        repository.save(spitter);
         //测试异常处理
 //        if (true) {
 //            throw new DuplicateSpittleException();

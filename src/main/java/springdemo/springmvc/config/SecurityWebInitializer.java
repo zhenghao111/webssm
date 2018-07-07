@@ -9,6 +9,4 @@ public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitia
     //DelegatingFileterProxy拦截请求，委托给ID为springSecurityFilterChain bean
     //springSecurityFilterChain可以链接多个Filter
 
-
-
 }

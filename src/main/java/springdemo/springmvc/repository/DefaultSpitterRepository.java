@@ -1,12 +1,12 @@
-package springdemo.springmvc.data;
+package springdemo.springmvc.repository;
 
 import org.springframework.stereotype.Component;
 import springdemo.springmvc.Spitter;
-import springdemo.springmvc.exception.DuplicateSpittleException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
-@Component
+//@Component
 public class DefaultSpitterRepository implements SpitterRepository {
 
     private Map<String, Spitter> spitterMap = new HashMap<>();
@@ -21,5 +21,20 @@ public class DefaultSpitterRepository implements SpitterRepository {
     public Spitter findByUsername(String username) {
         return spitterMap.get(username);
 //        return null;
+    }
+
+    @Override
+    public void addSpitter(Spitter spitter) {
+        throw  new NotImplementedException();
+    }
+
+    @Override
+    public void addSpitterWithNamedParam(Spitter spitter) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public Spitter findOne(String username) {
+        throw new NotImplementedException();
     }
 }

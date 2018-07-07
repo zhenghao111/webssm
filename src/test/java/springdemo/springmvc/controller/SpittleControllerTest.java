@@ -1,12 +1,10 @@
 package springdemo.springmvc.controller;
 
 import org.junit.Test;
-import org.springframework.context.annotation.Bean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 import org.springframework.web.servlet.view.InternalResourceView;
 import springdemo.springmvc.Spittle;
-import springdemo.springmvc.data.SpittleRepository;
+import springdemo.springmvc.repository.SpittleRepository;
 
 import java.util.ArrayList;
 import java.util.Date;

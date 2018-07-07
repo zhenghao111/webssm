@@ -1,4 +1,4 @@
-package springdemo.springmvc.data;
+package springdemo.springmvc.repository;
 
 import springdemo.springmvc.Spittle;
 

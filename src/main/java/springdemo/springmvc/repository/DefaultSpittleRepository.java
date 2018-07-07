@@ -1,4 +1,4 @@
-package springdemo.springmvc.data;
+package springdemo.springmvc.repository;
 
 import org.springframework.stereotype.Component;
 import springdemo.springmvc.Spittle;

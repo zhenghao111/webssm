@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springdemo.springmvc.Spittle;
-import springdemo.springmvc.data.SpittleRepository;
-import sun.rmi.runtime.Log;
+import springdemo.springmvc.repository.SpittleRepository;
 
 import java.util.List;
 

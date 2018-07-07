@@ -12,12 +12,6 @@ import springdemo.wiring.javaconfig.basepackage.SgtPeppers;
 import javax.swing.*;
 
 @Configuration
-//默认是配置类所在的包作为基础包
-//@ComponentScan
-//指定基础包，String数组，类型不安全
-//@ComponentScan(basePackages = {"springdemo.knights", "springdemo.wiring"})
-//指定基础包，类所在的包下面全扫描，可以创建一个空标记接口，重构友好
-//@ComponentScan(basePackageClasses = IScan.class)
 public class CDPlayerConfig {
 
     @Bean(name = "SgtPeppers")
@@ -34,7 +28,7 @@ public class CDPlayerConfig {
     //Spring自动装配需要的bean到参数中，推荐这种
     @Bean(name = "cdPlayer2")
     public IMediaPlayer cdPlyer2(ICD cd) {
-        return new CDPlayer(cd);
+        return new CDPlayer(cd);//构造器注入
     }
 
     //上面是通过构造器方法DI，通过其他方法DI
