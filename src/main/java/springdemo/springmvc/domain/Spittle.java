@@ -21,6 +21,7 @@ public class Spittle {
     private Date time;
     private Double latitude;
     private Double longitude;
+    private Spitter spitter;
 
     public Spittle(String message, Date time) {
         this(message, time, null, null);
