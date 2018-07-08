@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 
 //因为没有使用Template类来处理异常，PersistenceExceptionTranslationPostProcessor将这个bean的异常转化为Spring统一的数据访问异常
-//@Repository
+@Repository
 //持久化的方法是在事物上下文中执行
 @Transactional
 public class JpaSpitterRepository implements SpitterRepository{
