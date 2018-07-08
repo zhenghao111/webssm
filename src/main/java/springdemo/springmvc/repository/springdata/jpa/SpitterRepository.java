@@ -1,4 +1,4 @@
-package springdemo.springmvc.repository.springdata;
+package springdemo.springmvc.repository.springdata.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import springdemo.springmvc.domain.Spitter;

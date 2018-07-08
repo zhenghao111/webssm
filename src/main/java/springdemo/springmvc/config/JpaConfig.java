@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 //使用Spring Data JPA
-//@EnableJpaRepositories(basePackages = "springdemo.springmvc.repository.springdata")
+//@EnableJpaRepositories(basePackages = "springdemo.springmvc.repository.springdata.jpa")
 public class JpaConfig {
 
     //厂商适配器，指明使用哪一个厂商的JPA实现，TODO 这里应该有点问题

@@ -1,12 +1,9 @@
-package springdemo.springmvc.repository.springdata;
+package springdemo.springmvc.repository.springdata.jpa;
 
-import org.springframework.stereotype.Repository;
 import springdemo.springmvc.domain.Spitter;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 
 //注意SpitterRepository不是springdata.SpitterRepository
