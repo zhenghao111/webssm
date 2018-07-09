@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 启用占位符 -->
+    <context:property-placeholder />
+    <bean id="blankdisc" class="springdemo.com.zhenghao.wiring.xml.basepackage.BlankDisc"
+          c:title="${disc.title}"
+          c:artist="${disc.artist}"/>
+
+</beans>

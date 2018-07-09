@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="audience" class="com.zhenghao.aop.aop3.Audience" />
+    <bean id="musicPerformance" class="com.zhenghao.aop.aop3.MusicPerformance" />
+    <aop:config>
+        <aop:aspect ref="audience">
+
+            <aop:pointcut id="perform" expression="execution(* com.zhenghao.aop.aop3.Performance.perform(..))" />
+
+            <aop:before pointcut="execution(* com.zhenghao.aop.aop3.Performance.perform(..))"
+            method="silenceCellPhone" />
+
+            <aop:before method="takeSeats" pointcut-ref="perform" />
+
+            <aop:after-returning method="applause" pointcut-ref="perform" />
+
+            <aop:after-throwing method="demanRefund" pointcut="execution(* com.zhenghao.aop.aop3.Performance.perform(..))" />
+
+            <aop:around method="watcherformance" pointcut-ref="perform" />
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

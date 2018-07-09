@@ -1,0 +1,25 @@
+package com.zhenghao.wiring.mixed.basepackage;
+
+import lombok.Setter;
+
+public class CDPlayer implements IMediaPlayer {
+
+    @Setter
+    private ICD cd;
+
+    public CDPlayer() {
+
+    }
+
+
+    public CDPlayer(ICD cd) {
+        this.cd = cd;
+    }
+
+
+
+    @Override
+    public void play() {
+        cd.play();
+    }
+}

@@ -7,7 +7,11 @@
   <groupId>com.zhenghao</groupId>
   <artifactId>web-ssm</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <modules>
+    <module>spring-demo</module>
+    <module>springmvc-demo</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>web-ssm Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
@@ -222,28 +226,28 @@
       <version>2.5.0.RELEASE</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.com.zhenghao.security/spring-com.zhenghao.security-core -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
       <version>4.2.7.RELEASE</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.com.zhenghao.security/spring-com.zhenghao.security-com.zhenghao.config -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
       <version>4.2.7.RELEASE</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.com.zhenghao.security/spring-com.zhenghao.security-web -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
       <version>4.2.7.RELEASE</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.com.zhenghao.security/spring-com.zhenghao.security-taglibs -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-taglibs</artifactId>
