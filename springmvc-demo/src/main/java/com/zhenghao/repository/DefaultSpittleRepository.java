@@ -18,7 +18,8 @@ public class DefaultSpittleRepository implements SpittleRepository {
 
     @Override
     public Spittle findOne(Long id) {
-        return new Spittle("1234", new Date());
+//        return new Spittle("1234", new Date());
+        return null;
     }
 
     private List<Spittle> createSpittleList(int count) {
