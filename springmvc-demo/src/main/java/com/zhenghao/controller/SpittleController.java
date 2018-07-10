@@ -9,7 +9,7 @@ import com.zhenghao.repository.SpittleRepository;
 
 import java.util.List;
 
-@Controller
+//@Controller
 @RequestMapping("/spittles")
 public class SpittleController {
 
@@ -44,11 +44,7 @@ public class SpittleController {
     //@PathVariable相同变量名可以省略
     public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
         model.addAttribute(spittleRepository.findOne(spittleId));
-//        System.out.println(spittleId);
-//        System.out.println(spittleRepository.findOne(spittleId));
-//        System.out.println(model.containsAttribute("spittle"));
+
         return "spittle";
     }
-
-
 }
