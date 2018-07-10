@@ -63,7 +63,7 @@ public class SpittleController {
     // 方法3：用异常处理器应对错误场景，异常处理和业务代码分离
     @RequestMapping(method = RequestMethod.GET,
                     value = "/{id}")
-    public ResponseEntity<Spittle> spittleById(@PathVariable long id) {
+    public @ResponseBody Spittle spittleById(@PathVariable long id) {
         System.out.println("spittleById找不到对象");
 //        return null;//假设找不到，返回null
 
@@ -86,7 +86,10 @@ public class SpittleController {
             // 那边的返回，相当于这边的返回
             throw new SpittleNotFoundException2(id);
         }
-        return new ResponseEntity<Spittle>(spittle, HttpStatus.OK);
+        // 因为返回始终是200，所以可以用@ResponseBody Spittle
+        // 如果用了@RestController，可以省略@ResponseBody
+//        return new ResponseEntity<Spittle>(spittle, HttpStatus.OK);
+        return spittle;
     }
 
 
