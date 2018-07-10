@@ -5,12 +5,14 @@ import com.zhenghao.domain.Spittle;
 import com.zhenghao.exception.SpittleNotFoundException2;
 import com.zhenghao.repository.SpittleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.net.URI;
 import java.util.List;
 
 @Controller
@@ -52,17 +54,21 @@ public class SpittleController {
     // Spring查看请求中的Content-Type头部信息，查找能将请求转化为Spittle的消息转换器
     // consumes属性查看请求中的Context-Type头部信息，只处理指定类型的请求
     @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"})
-    public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {
+    public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle) {
         System.out.println("保存spittle");
-        return spittle;
+        HttpHeaders headers = new HttpHeaders();
+        URI locationURI = URI.create("http://localhost:8080/spittles/1234");
+        headers.setLocation(locationURI);
+
+        ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(spittle, headers, HttpStatus.CREATED);
+        return responseEntity;
     }
 
     // 处理错误信息给响应体
     // 方法1：用@ResponseStatus指定状态码，参考SpittleNotFoundException异常处理，抛出异常，直接返回错误状态
     // 方法2：用ResponseEntity对象替代@ResponseBody，包含了响应相关的元数据和要转换成资源表述的对象，可以用错误对象来填充响应体
     // 方法3：用异常处理器应对错误场景，异常处理和业务代码分离
-    @RequestMapping(method = RequestMethod.GET,
-                    value = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public @ResponseBody Spittle spittleById(@PathVariable long id) {
         System.out.println("spittleById找不到对象");
 //        return null;//假设找不到，返回null
@@ -91,6 +97,7 @@ public class SpittleController {
 //        return new ResponseEntity<Spittle>(spittle, HttpStatus.OK);
         return spittle;
     }
+
 
 
 }

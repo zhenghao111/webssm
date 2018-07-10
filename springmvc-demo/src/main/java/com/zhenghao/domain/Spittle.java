@@ -21,6 +21,9 @@ public class Spittle implements Serializable {
     private Double longitude;
     private Spitter spitter;
 
+    public Spittle() {
+    }
+
     public Spittle(String message, Date time) {
         this(message, time, null, null);
     }
@@ -31,6 +34,21 @@ public class Spittle implements Serializable {
         this.time = time;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Spittle(Long id, String message, Date time, Double latitude, Double longitude, Spitter spitter) {
+        this.id = id;
+        this.message = message;
+        this.time = time;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.spitter = spitter;
+    }
+
+    public Spittle(Long id, String message, Date time) {
+        this.id = id;
+        this.message = message;
+        this.time = time;
     }
 
     @Override

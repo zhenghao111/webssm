@@ -35,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            .and()
 //            .httpBasic().realmName("spitter");
         http.authorizeRequests()
-                .anyRequest().permitAll();
+                .anyRequest().permitAll()
+        .and()
+        .csrf().disable();
 
 
     }
