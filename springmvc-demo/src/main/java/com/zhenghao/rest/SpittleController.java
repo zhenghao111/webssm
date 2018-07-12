@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 
 import java.net.URI;
@@ -54,10 +55,16 @@ public class SpittleController {
     // Spring查看请求中的Content-Type头部信息，查找能将请求转化为Spittle的消息转换器
     // consumes属性查看请求中的Context-Type头部信息，只处理指定类型的请求
     @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"})
-    public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle) {
+    public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle, UriComponentsBuilder builder) {
         System.out.println("保存spittle");
         HttpHeaders headers = new HttpHeaders();
-        URI locationURI = URI.create("http://localhost:8080/spittles/1234");
+//        URI locationURI = URI.create("http://localhost:8080/spittles/1234");
+        URI locationURI = builder
+                                .path("/spittles")
+                                .path(String.valueOf(spittle.getId()))
+                                .build()
+                                .toUri();
+
         headers.setLocation(locationURI);
 
         ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(spittle, headers, HttpStatus.CREATED);
