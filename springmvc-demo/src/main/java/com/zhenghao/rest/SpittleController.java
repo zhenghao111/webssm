@@ -57,16 +57,19 @@ public class SpittleController {
     @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"})
     public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle, UriComponentsBuilder builder) {
         System.out.println("保存spittle");
+        // 存放响应的头部信息值，是一个MultiValueMap<String, String>类型
         HttpHeaders headers = new HttpHeaders();
 //        URI locationURI = URI.create("http://localhost:8080/spittles/1234");
         URI locationURI = builder
-                                .path("/spittles")
+                                .path("/spittles/")
                                 .path(String.valueOf(spittle.getId()))
                                 .build()
                                 .toUri();
 
+        // 将资源的URL放在响应的头部信息Location
         headers.setLocation(locationURI);
 
+        // 返回状态码201，表明了请求成功。且创建了新资源
         ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(spittle, headers, HttpStatus.CREATED);
         return responseEntity;
     }

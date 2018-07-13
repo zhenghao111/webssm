@@ -18,7 +18,7 @@ public class DefaultSpittleRepository implements SpittleRepository {
 
     @Override
     public Spittle findOne(Long id) {
-        return new Spittle("1234", new Date());
+        return new Spittle(1234L, "message", new Date());
 //        return null;
     }
 
