@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:amp="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/com.zhenghao.aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- JmsTemplate -->
+    <bean class="org.springframework.jms.core.JmsTemplate"
+          id="jmsTemplate"
+          c:_0-ref="activeMQConnectionFactory"
+          p:defaultDestination-ref="activeMQQueue"
+          p:messageConverter-ref="converter" />
+
+    <!-- 声明一个消息转换器 -->
+    <bean class="org.springframework.jms.support.converter.SimpleMessageConverter"
+          id="converter" />
+
+    <!-- 方式1 -->
+    <!-- 连接工厂 -->
+    <bean class="org.apache.activemq.spring.ActiveMQConnectionFactory"
+          id="activeMQConnectionFactory" />
+
+    <!-- 目的地：队列 -->
+    <bean class="org.apache.activemq.command.ActiveMQQueue"
+          id="activeMQQueue"
+          c:name="spitter.queue" />
+
+    <!-- 目的地：主题 -->
+    <bean class="org.apache.activemq.command.ActiveMQTopic"
+          id="activeMQTopic"
+          c:name="spitter.queue" />
+
+
+    <!-- 方式2，使用命名空间 -->
+    <!-- 连接工厂 -->
+    <!--<amp:connectionFactory id="activeMQConnectionFactory" brokerURL="http://localhost:61616" />-->
+
+    <!-- 目的地：队列 -->
+    <!--<amp:queue id="spittleQueue" physicalName="spittle.alert.queue" />-->
+
+    <!-- 目的地：主题 -->
+    <!--<amp:topic id="spittleTopic" physicalName="spittle.alert.topic" />-->
+
+</beans>
