@@ -1,4 +1,4 @@
-package com.zhenghao.alerts;
+package com.zhenghao.jms.alerts;
 
 import com.zhenghao.domain.Spittle;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

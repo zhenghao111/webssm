@@ -1,15 +1,8 @@
-package com.zhenghao.alerts;
+package com.zhenghao.jms.alerts;
 
 import com.zhenghao.domain.Spittle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsOperations;
-import org.springframework.jms.core.MessageCreator;
-import org.springframework.jms.support.JmsUtils;
-
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.ObjectMessage;
-import javax.jms.Session;
 
 public class AlertServiceImp implements AlertService {
 
